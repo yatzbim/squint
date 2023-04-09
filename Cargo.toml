@@ -7,4 +7,8 @@ edition = "2021"
 
 [dependencies]
 bonsaidb = "0.4.1"
+chrono = "0.4.24"
+dateparser = "0.2.0"
+eyre = "0.6.8"
 rss = "2.0.3"
+url = "2.3.1"
