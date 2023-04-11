@@ -1,16 +1,21 @@
-use std::collections::HashSet;
+use crate::content::Article;
 
 // Module containing traits specifying specific scraping behavior and specific integrations to implement that behavior.
 // We'll start with RSS and see how it goes.
 #[path = "rss-layer.rs"]
 mod rss_layer;
 
-pub trait Scraper {
-    fn scrape_title(&self) -> String;
-    fn scrape_creator(&self) -> String;
-    fn scrape_description(&self) -> String;
-    fn scrape_date(&self) -> String;
-    fn scrape_categories(&self) -> HashSet<String>;
-    fn scrape_link(&self) -> String;
-    fn scrape_body(&self) -> String;
+pub trait SingleScraper {
+    fn title(&self) -> String;
+    fn author(&self) -> String;
+    fn description(&self) -> String;
+    fn publish_date(&self) -> String;
+    fn categories(&self) -> Vec<String>;
+    fn link(&self) -> String;
+    fn body(&self) -> String;
+    fn construct_article(&self) -> Article;
+}
+
+pub trait MultiScraper {
+    fn scrape_articles(&self) -> Vec<Article>;
 }
